@@ -12,7 +12,7 @@ from utils.common import timestamp_now
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile')
+    user_id = models.SmallIntegerField(default=-1)
     gender = models.CharField(default='', max_length=5, verbose_name="性别")
 
 

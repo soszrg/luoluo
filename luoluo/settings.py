@@ -92,11 +92,27 @@ WSGI_APPLICATION = 'luoluo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'luoluo',
+        'NAME': 'luoluo_default',
         'PASSWORD': '123456',
         'USER': 'admin',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
+    },
+    'slave': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'luoluo_slave',
+        'USER': 'admin',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
+    },
+    'master': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'luoluo_master',
+        'USER': 'admin',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
     }
 }
 
@@ -186,3 +202,14 @@ LOGGING = {
 # debug tool bar
 # =======
 INTERNAL_IPS = ["127.0.0.1"]
+
+
+# =====
+# db router
+# =====
+DATABASE_ROUTERS = ['luoluo.db_router.CommonRouter']
+DATABASE_APPS_MAPPING = {
+    # 'app_name': 'database_name',
+    'profiles': 'master',
+    'upload': 'slave',
+}

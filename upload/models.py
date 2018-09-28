@@ -11,7 +11,7 @@ from utils.common import timestamp_now
 class Picture(models.Model):
     headline = models.CharField(max_length=200, verbose_name='标题')
     url = models.URLField(max_length=200, verbose_name="下载链接")
-    owner = models.ForeignKey(Profile, verbose_name="上传者")
+    owner_id = models.SmallIntegerField(default=-1, verbose_name="上传者")
     description = models.TextField(default='')
     upload_time = models.IntegerField(default=timestamp_now)
     update_time = models.IntegerField(default=timestamp_now)
