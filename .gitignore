@@ -56,7 +56,7 @@ env.sh
 */*/migrations/*
 !*/migrations/__init__.py
 staticfiles
-weblog
+logs
 bind.txt
 celerybeat-schedule
 celerybeat.pid

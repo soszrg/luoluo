@@ -41,6 +41,7 @@ DJANGO_APPS = [
 
 THIRD_PART_APPS = [
     'rest_framework',
+    'debug_toolbar',
 ]
 
 LOCAL_APPS = [
@@ -60,6 +61,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'luoluo.urls'
@@ -157,13 +159,30 @@ LOGGING = {
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'standard'
+        },
+        'concurrent': {
+            'level': 'DEBUG',
+            'class': 'cloghandler.ConcurrentRotatingFileHandler',
+            'maxBytes': 1024 * 1024 * 50,
+            'backupCount': 50,
+            # If delay is true,
+            # then file opening is deferred until the first call to emit().
+            'delay': True,
+            'filename': 'logs/concurrent_file.log',
+            'formatter': 'standard'
         }
     },
     'loggers': {
         'django': {
-            'handlers': ['console'],
+            'handlers': ['console', 'concurrent'],
             'level': 'DEBUG',
             'propagate': True
         }
     }
 }
+
+
+# =======
+# debug tool bar
+# =======
+INTERNAL_IPS = ["127.0.0.1"]

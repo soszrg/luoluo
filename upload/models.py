@@ -41,5 +41,23 @@ class PicturesInGallery(models.Model):
         ordering = ('joined_time',)
 
     def __str__(self):
-        return "{0.gallery.headline}->{0.gallery.headline}".format(self)
+        return "{0.gallery.headline}->{0.picture.headline}".format(self)
+
+
+class Tag(models.Model):
+    content = models.CharField(max_length=200, default="")
+    p_tag = models.ForeignKey('self', null=True, blank=True)
+    commit_time = models.IntegerField(default=timestamp_now)
+    update_time = models.IntegerField(default=timestamp_now)
+
+    class Meta:
+        ordering = ("-update_time",)
+
+    def __str__(self):
+        return "{}".format(self.id)
+
+
+class PictureTags(models.Model):
+    picture = models.ForeignKey(Picture, related_name="pts_pic", on_delete=models.CASCADE)
+    tags = models.ManyToManyField(Tag, related_name="pts_tag")
 
