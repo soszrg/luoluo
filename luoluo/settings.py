@@ -42,6 +42,8 @@ DJANGO_APPS = [
 THIRD_PART_APPS = [
     'rest_framework',
     'debug_toolbar',
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 LOCAL_APPS = [
@@ -213,3 +215,10 @@ DATABASE_APPS_MAPPING = {
     'profiles': 'master',
     'upload': 'slave',
 }
+
+# =====
+# celery config
+# =====
+# results
+CELERY_RESULT_BACKEND = 'django-db'
+# beat
