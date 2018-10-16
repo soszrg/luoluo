@@ -61,3 +61,7 @@ class PictureTags(models.Model):
     picture = models.ForeignKey(Picture, related_name="pts_pic", on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, related_name="pts_tag")
 
+
+class PkStudy(models.Model):
+    title = models.CharField(max_length=20, primary_key=True)
+    content = models.CharField(max_length=50)
