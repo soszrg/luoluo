@@ -14,6 +14,6 @@ app.autodiscover_tasks()
 
 @app.task(bind=True)
 def async_test(self):
-    print 'Request: {0!r}'.format(self.request)
+    print('Request: {0!r}'.format(self.request))
 
 

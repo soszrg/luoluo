@@ -18,9 +18,6 @@ class PictureView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def get(self, request):
-        pgs = Picture.objects.only("url", "headline")
-        for one in pgs:
-            print one.url
         with transaction.atomic():
             p = Picture.objects.select_for_update().get(pk=3)
             p.headline = 'p3'

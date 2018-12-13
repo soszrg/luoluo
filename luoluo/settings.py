@@ -206,15 +206,16 @@ LOGGING = {
 INTERNAL_IPS = ["127.0.0.1"]
 
 
-# =====
+# =====ls
+
 # db router
 # =====
-DATABASE_ROUTERS = ['luoluo.db_router.CommonRouter']
-DATABASE_APPS_MAPPING = {
+# DATABASE_ROUTERS = ['luoluo.db_router.CommonRouter']
+# DATABASE_APPS_MAPPING = {
     # 'app_name': 'database_name',
-    'profiles': 'master',
-    'upload': 'slave',
-}
+    # 'profiles': 'master',
+    # 'upload': 'slave',
+# }
 
 # =====
 # celery config
