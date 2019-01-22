@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'luoluo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'luoluo_default',
+        'NAME': 'luoluo',
         'PASSWORD': '123456',
         'USER': 'admin',
         'HOST': '127.0.0.1',
